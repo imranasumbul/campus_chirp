@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body{
+  @apply h-full bg-black;
+}
+
+:root {
+  --color-dark-card : rgb(38 38 38);
+  --color-dark-bg: rgba(24, 24, 34, 0.991);
+  --color-dark-text: rgb(223, 226, 232);
+  --color-dark-light-violet: rgb(124 58 237);
+  --color-dark-dark-violet: rgb(91 33 182);
+  
+  
+
+  
+}
+
+
+
+@layer base {
+  :root {
+
+
+
+    --radius: 0.5rem
+  }
+}
