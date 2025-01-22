@@ -3,28 +3,28 @@ import React from 'react'
 import { BsBellFill, BsHouseFill } from 'react-icons/bs'
 import { FaUser } from 'react-icons/fa'
 import SidebarLogo from './SidebarLogo'
-import SidebarItem from './SidebarItem'
-
 import SidebarLogin from './SidebarLogin'
 import PostButtonLogic from './PostButtonLogic'
+import SidebarItemWrapper from './SidebarItemWrapper'
 
 function Sidebar() {
+   
    
     const items = [
         {
             label: "Home",
             href: "/",
-            icon: BsHouseFill
+            icon: <BsHouseFill size={22}/>
         },
         {
             label: "Notifications",
             href: "/notifications",
-            icon: BsBellFill
+            icon: <BsBellFill size={22}/>
         },
         {
             label: "Profile",
-            href: "/users/123",
-            icon: FaUser
+            href: null,
+            icon: <FaUser size={22}/>
         }
     ]
   return (
@@ -34,7 +34,7 @@ function Sidebar() {
                 <SidebarLogo/>
                 {items.map((item) => {
                     return (
-                        <SidebarItem key={item.href} label={item.label} href={item.href} icon={item.icon} />
+                        <SidebarItemWrapper key={item.href} text={item.label} href={item.href} icon={item.icon} />
                     )
                     
                 })}

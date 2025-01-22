@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useSession } from 'next-auth/react'
-import updateUserProfile from '@/actions/updateProfile'
 import { useRouter } from 'next/navigation'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
@@ -12,16 +11,16 @@ import reactToast from '@/lib/reactToast'
 interface editProfile {
     name: string,
     username: string,
-    bio?: string | null
+    bio?: null | string
 }
 const profileEditSchema = z.object({
     name: z.string().min(4, {message: "Name must be a minimum of 4 characters"}),
     username: z.string(),
-    bio: z.string().min(0),
-    
+    bio: z.string().nullable()   
 })
 function EditForm() {
     const user = useSession().data?.user;
+    console.log(user?.id);
     const router = useRouter();
     const form  = useForm<z.infer<typeof profileEditSchema>>({
         resolver: zodResolver(profileEditSchema),
@@ -36,19 +35,23 @@ function EditForm() {
         try{
             const userId = user?.id;
             console.log(form.formState.errors);
-            console.log("inside")
-            const res = await updateUserProfile({userId, ...data});
+            const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/userDetails`;
+            const res = await fetch(url, {
+                method: 'POST', 
+                body: JSON.stringify({ userId, ...data }),
+            })
+           
             if(res instanceof Error){
                 reactToast({message: `${res.message}`, type: "error", duration: 5000});
             }else{
                 reactToast({message: `User updated successfully`, type: "success", duration: 5000});
-                router.push(`/user/${user?.id}`);
+                router.push(`/`);
             }
             }catch(e){
-                console.log(e);
-                reactToast({message: `An unexpected error occured. Please try later`, type: "error", duration: 5000});
+                
+                reactToast({message: `${e}`, type: "error", duration: 5000});
                 router.push(`/user/${user?.id}`);
-        }
+            }
     }
     return (
         <>
@@ -63,7 +66,7 @@ function EditForm() {
                                     Your name
                                 </FormLabel>
                                 <FormControl>
-                                    <Input {...field} placeholder={user?.name} />
+                                    <Input className='text-dark-text' {...field} placeholder={user?.name} />
                                 </FormControl>
                                 <FormMessage/>
                             </FormItem>
@@ -80,7 +83,7 @@ function EditForm() {
                                     Your Username
                                 </FormLabel>
                                 <FormControl>
-                                    <Input {...field} placeholder={user?.username} />
+                                    <Input className='text-dark-text' {...field} placeholder={user?.username} />
                                 </FormControl>
                                 <FormMessage/>
                             </FormItem>
@@ -97,7 +100,7 @@ function EditForm() {
                                     Your Bio
                                 </FormLabel>
                                 <FormControl>
-                                    <Input {...field} placeholder={(user?.bio) ? user?.bio : `No bio yet`} />
+                                    <Input className='text-dark-text' {...field} value={field.value ?? ""} placeholder={(user?.bio) ? user?.bio : `No bio yet`} />
                                 </FormControl>
                                 <FormMessage/>
                             </FormItem>
@@ -105,7 +108,7 @@ function EditForm() {
                     }}
                     >
                     </FormField>
-                    <Button className='w-[100%]' type='submit'>Submit</Button>
+                    <Button className='w-[100%] mt-2' type='submit'>Submit</Button>
             </form>
         </Form>
     </>

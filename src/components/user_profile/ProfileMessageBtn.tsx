@@ -5,7 +5,7 @@ import { Button } from '../ui/button'
 function ProfileMessageBtn() {
   return (
     <>
-    <Button className='min-w-[60%]'>Message</Button>
+    <Button className='sm:min-w-[60%] '>Message</Button>
     </>
   )
 }

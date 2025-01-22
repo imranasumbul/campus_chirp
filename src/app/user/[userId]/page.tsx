@@ -3,21 +3,14 @@ import Header from '@/components/header/Header';
 import Profile from '@/components/user_profile/Profile';
 import React from 'react'
 
-interface PageProps {
-    params: {
-        userId : string
-    },
-    searchParams : {
 
-    }
-}
- function page(props : PageProps) {
-    const userId =  props.params.userId;
+ function page({params} : {params: {userId : string}}) {
+  
    
   return (
     <>
     <Header />
-    <Profile userId={userId} />
+    <Profile userId={params.userId}/>
     
     </>
     

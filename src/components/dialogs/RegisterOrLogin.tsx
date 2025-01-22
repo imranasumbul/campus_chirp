@@ -25,7 +25,7 @@ function RegisterOrLogin({triggerItem}:RegisterOrLoginProps) {
             <DialogContent >
                 <DialogHeader>
                 <DialogTitle className='text-white'>Login to continue</DialogTitle>
-                <DialogDescription>
+                <DialogDescription className='text-neutral-400'>
                 We cannot let you perform this action without signing in
                 </DialogDescription>
                 <div className='flex justify-between'>

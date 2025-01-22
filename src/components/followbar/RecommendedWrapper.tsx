@@ -12,10 +12,10 @@ import RecommendedButtons from './RecommendedButtons'
 //import { useSession } from 'next-auth/react';
 
 function RecommendedWrapper({name, username, id, profileImage}: UserInterface) {
-  console.log(profileImage); //i did it so that i could deploy successfully
+  console.log(`${profileImage} just to remove build error`); //i did it so that i could deploy successfully
   //const session = useSession();
   return (
-    <Card className='text-dark-text '>
+    <Card className='text-dark-text  '>
   <CardHeader >
     <div className='flex space-x-2'>
       <div className='h-6 w-6 rounded-full bg-red-300'></div>

@@ -1,19 +1,24 @@
 "use client";
 
-import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 import React from 'react'
 
 interface sideBarWrapperProps {
     icon: React.ReactNode,
     text: string,
-    href: string
+    href: string | null
 
 }
 function SidebarItemWrapper({icon, text, href}: sideBarWrapperProps) {
-    const router = useRouter();
+    
+    const userId = useSession().data?.user.id;
+    if(href === null){
+        href = `/user/${userId}`
+    }
   return (
     <>
-    <div onClick={() => router.push(href)} className='flex justify-between items-center space-x-2'>
+    <Link prefetch={true} href={href} className='flex justify-between items-center space-x-2'>
         <div className='
         h-10
         w-10 
@@ -39,7 +44,7 @@ function SidebarItemWrapper({icon, text, href}: sideBarWrapperProps) {
         '>
             {text}
         </div>
-    </div>
+    </Link>
 
     
     </>

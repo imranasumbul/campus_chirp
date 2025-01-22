@@ -4,11 +4,8 @@ import ProfileInfo from './ProfileInfo';
 import axios from 'axios';
 
 async function Profile({userId}: {userId : string}) {
-    const userDetails = (await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getUserDetails`, {
-        params: {
-            userId
-        }
-    })).data
+    
+    const userDetails = (await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/userDetails?userId=${userId}`)).data
 
     
  

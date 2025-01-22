@@ -3,22 +3,28 @@ import {
     Dialog,
     DialogContent,
     DialogDescription,
+    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
+import PostTextArea from './PostTextArea';
+import { Button } from '../ui/button';
   
 function PostDialog({triggerItem}: {triggerItem: React.ReactNode}) {
   return (
     <Dialog>
   <DialogTrigger>{triggerItem}</DialogTrigger>
-  <DialogContent>
+  <DialogContent className='text-dark-text'>
     <DialogHeader>
-      <DialogTitle>Posting...</DialogTitle>
+      <DialogTitle>holavfbhoijlk</DialogTitle>
       <DialogDescription>
-        Post content
+        <PostTextArea />
       </DialogDescription>
     </DialogHeader>
+    <DialogFooter>
+      <Button className='w-[100px]'>Post</Button>
+    </DialogFooter>
   </DialogContent>
 </Dialog>
 

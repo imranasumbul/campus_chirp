@@ -1,10 +1,15 @@
 import prisma from "@/lib/prismadb";
-import { NextResponse } from "next/server";
-export async function GET(){
+import { NextRequest, NextResponse } from "next/server";
+export async function GET(req: NextRequest){
     try{
+        const ownerId = req.nextUrl.searchParams.get(`ownerId`);
+        
         const recommendedUsers = await prisma.user.findMany({
             skip: 0,
             take: 6,
+            where: ownerId && ownerId !== 'null' ? {id: {
+                not: ownerId
+            }} : {},
             orderBy: {
                 createdAt: "desc"
             },

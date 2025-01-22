@@ -1,21 +1,23 @@
 "use client"
 
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 import RecommendedWrapper from './RecommendedWrapper';
 import { UserInterface } from './UserInterface';
+import { useSession } from 'next-auth/react';
 
 
 
 function Recommended() {
     const [recommendedUsers, setRecommendedUsers] = useState([]);
+    const ownerId = useSession().data?.user.id;
     useEffect(() => {
-        axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users`).then((data) => {
-            const users = data.data;
-            setRecommendedUsers(users);
-           
-        });
-    }, []);
+        if(ownerId){
+            fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users?ownerId=${ownerId}`).then((data) => data.json()).then((jsonData) => setRecommendedUsers(jsonData));
+        }else{
+            fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users?ownerId=null`).then((data) => data.json()).then((jsonData) => setRecommendedUsers(jsonData));
+    
+        }
+        }, []);
     
     
     

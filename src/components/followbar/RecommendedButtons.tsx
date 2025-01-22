@@ -9,7 +9,7 @@ function RecommendedButtons({userId}: {userId?: string}) {
   return (
     <>
     <Link href={`/user/${userId}`}>
-    <Button className='w-[100%]'>View Profile</Button>
+    <Button className=' w-[100%]'>View Profile</Button>
     </Link>
     </>
   )

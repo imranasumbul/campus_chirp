@@ -10,7 +10,7 @@ import EditProfileBtn from './EditProfileBtn'
 function ProfileInfo({profileImage, userId, name, username, bio, followersCount, followingCount}: ProfileInterface) {
   const session = useSession();
   console.log(session.data?.user.id)
-  console.log( profileImage, bio) //did it just to remove build error
+  console.log( profileImage, bio , "just to remove build error profileImage and bio") //did it just to remove build error
   return (
     <>
     <div className='grid grid-cols-2 sm:grid-cols-3 px-3 w-[100%]'>
