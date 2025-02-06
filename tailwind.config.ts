@@ -10,11 +10,11 @@ const config: Config = {
   theme: {
   	extend: {
   		colors: {
-        'dark-card': 'var(--color-dark-card)',
-		    'dark-bg': 'var(--color-dark-bg)',
-        'dark-text': 'var(--color-dark-text)',
-        'dark-light-violet': 'var(--color-dark-light-violet)',
-        'dark-dark-violet': 'var(--color-dark-dark-violet)',
+        'dark-card':  'rgb(38 38 38)',
+		    'dark-bg': 'rgba(24, 24, 34, 0.991)',
+        'dark-text': 'rgb(223, 226, 232)',
+        'dark-light-violet': 'rgb(124 58 237)',
+        'dark-dark-violet': 'rgb(91 33 182)',
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

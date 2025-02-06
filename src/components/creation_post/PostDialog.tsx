@@ -3,13 +3,13 @@ import {
     Dialog,
     DialogContent,
     DialogDescription,
-    DialogFooter,
+    
     DialogHeader,
     DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
 import PostTextArea from './PostTextArea';
-import { Button } from '../ui/button';
+
   
 function PostDialog({triggerItem}: {triggerItem: React.ReactNode}) {
   return (
@@ -17,14 +17,12 @@ function PostDialog({triggerItem}: {triggerItem: React.ReactNode}) {
   <DialogTrigger>{triggerItem}</DialogTrigger>
   <DialogContent className='text-dark-text'>
     <DialogHeader>
-      <DialogTitle>holavfbhoijlk</DialogTitle>
+      <DialogTitle>Post Something</DialogTitle>
       <DialogDescription>
         <PostTextArea />
       </DialogDescription>
     </DialogHeader>
-    <DialogFooter>
-      <Button className='w-[100px]'>Post</Button>
-    </DialogFooter>
+    
   </DialogContent>
 </Dialog>
 
