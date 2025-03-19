@@ -2,20 +2,23 @@ import React, { useState } from 'react'
 import { Button } from '../ui/button';
 import { useSession } from 'next-auth/react';
 import reactToast from '@/lib/reactToast';
+import { useRouter } from 'next/navigation';
 //import { error } from 'console';
 
 function PostTextArea() {
     const [postContent, setPostContent] = useState("");
     const userId = useSession().data?.user.id;
+    const router = useRouter();
     const submitFunc = () => {
       fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/createPost`, {
         method: 'POST',
         body: JSON.stringify({ userId, body: postContent })
       }).then((res) => res.json().then((res) => {
-        if (!res.ok) {
+        if (res.error) {
            reactToast({message: `An unexpected error occured. Please try later.`, type: 'error', duration: 5000});
           } else {
            reactToast({message: `Post created successfully`, type: 'success', duration: 3000})
+           router.push('/');
       }
 
     }))};

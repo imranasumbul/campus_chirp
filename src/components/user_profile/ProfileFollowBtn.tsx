@@ -35,7 +35,7 @@ function ProfileFollowBtn({profileUserId} : ProfileFollowBtnProps) {
 
        })
       }
-    },[])
+    },[followerId, isFollowing, followingIds, profileUserId])
   
   
   

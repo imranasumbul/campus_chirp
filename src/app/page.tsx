@@ -1,5 +1,6 @@
 
 import Header from "@/components/header/Header";
+import MainContent from "@/components/main_content/MainContent";
 
 import "@radix-ui/themes/styles.css";
 
@@ -15,6 +16,7 @@ export default async function Home() {
     
             
       <Header/>
+      <MainContent/>
             
               
     </>

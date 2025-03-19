@@ -1,5 +1,5 @@
 import React from 'react'
-import { BsTwitter } from 'react-icons/bs'
+import { BsFire} from 'react-icons/bs'
 
 
 
@@ -16,7 +16,7 @@ function SidebarLogo() {
         items-center 
         justify-center
         transition'>
-            <BsTwitter size={24} color='white' />
+            <BsFire size={28} color='white' />
         </div>
     
   )

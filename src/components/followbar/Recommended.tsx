@@ -17,7 +17,7 @@ function Recommended() {
             fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users?ownerId=null`).then((data) => data.json()).then((jsonData) => setRecommendedUsers(jsonData));
     
         }
-        }, []);
+        }, [ownerId]);
     
     
     

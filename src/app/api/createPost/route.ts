@@ -15,6 +15,7 @@ export async function POST(req: NextRequest){
         }
 
     }catch(e){
+        console.log(e);
             return NextResponse.json({errorMsg: `An internal server error occured. Try again later`, error: e }, {status: 500});
 
     }
